@@ -28,4 +28,40 @@
  */
 export function chaiTapriRevenue(customers) {
   // Your code here
+  /*Raju bhai ka special rule:
+ *   - Har 3rd customer ko milti hai "Adrak Chai" (special ginger tea) = Rs 15
+ *   - Baaki sab ko milti hai "Cutting Chai" = Rs 10
+ *   - Customer 1 = cutting, Customer 2 = cutting, Customer 3 = adrak,
+ *     Customer 4 = cutting, Customer 5 = cutting, Customer 6 = adrak ... and so on
+ *
+ * Validation:
+ *   - Agar customers ek positive integer nahi hai (e.g., negative, zero, decimal,
+ *     string, etc.), toh return karo: { totalChai: 0, totalRevenue: 0 }*/
+ 
+  if (!Number.isInteger(customers) || customers <= 0) {
+    return {
+      totalChai: 0,
+      totalRevenue: 0
+    };
+  }
+
+  let totalRevenue = 0;
+
+  
+  for (let i = 1; i <= customers; i++) {
+    if (i % 3 === 0) {
+      totalRevenue += 15;
+    } else {
+    totalRevenue += 10;
+    }
+  }
+
+
+  return {
+    totalChai: customers,
+    totalRevenue: totalRevenue
+  };
 }
+
+  
+
